@@ -8,7 +8,7 @@ class FormInputSampah extends StatefulWidget {
 }
 
 class _FormInputSampahState extends State<FormInputSampah> {
-  int _selectedNasabah = 1;
+  int? _selectedNasabah;
   List<InputSampahModel> sampahs = [];
 
   void handleSubmit() async {
@@ -18,7 +18,7 @@ class _FormInputSampahState extends State<FormInputSampah> {
 
     await context
         .read<InputSampahCubit>()
-        .storeSampah(_selectedNasabah, sampahs);
+        .storeSampah(_selectedNasabah!, sampahs);
     InputSampahState state = context.read<InputSampahCubit>().state;
 
     if (state is StoreSampahSuccess) {
@@ -40,7 +40,7 @@ class _FormInputSampahState extends State<FormInputSampah> {
         child: Container(
           width: double.infinity,
           color: Colors.white,
-          child: Column(
+          child: ListView(
             children: [
               Padding(
                 padding: const EdgeInsets.all(16),
@@ -50,6 +50,18 @@ class _FormInputSampahState extends State<FormInputSampah> {
                     child: BlocBuilder<NasabahCubit, NasabahState>(
                       builder: (context, state) {
                         return SearchField<NasabahModel>(
+                          hint: 'Cari Nama Nasabah',
+                          onSuggestionTap: (value) {
+                            _selectedNasabah = value.item!.id!;
+                          },
+                          searchInputDecoration: InputDecoration(
+                              border: InputBorder.none,
+                              suffixIcon: Icon(
+                                Icons.arrow_drop_down,
+                                size: 36,
+                                color: primaryColor,
+                              )),
+                          maxSuggestionsInViewPort: 5,
                           suggestions: (state as NasabahLoaded)
                               .nasabahs!
                               .map((e) => SearchFieldListItem<NasabahModel>(
@@ -106,7 +118,15 @@ class _FormInputSampahState extends State<FormInputSampah> {
               ),
               CustomButton(
                 title: 'Submit',
-                onPress: () => handleSubmit(),
+                onPress: () {
+                  if (_selectedNasabah == null || sampahs.isEmpty) {
+                    snackbarError(
+                        title: 'Terjadi Kesalahan',
+                        message: 'Mohon Lengkapi Seluruh Data');
+                  } else {
+                    handleSubmit();
+                  }
+                },
               )
             ],
           ),

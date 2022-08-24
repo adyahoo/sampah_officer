@@ -30,7 +30,7 @@ class _CustomDropdownState extends State<CustomDropdown> {
             : SizedBox(),
         Container(
             width: double.infinity,
-            height: 45,
+            height: 50,
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.symmetric(horizontal: 16),
             margin: EdgeInsets.only(bottom: 24),
