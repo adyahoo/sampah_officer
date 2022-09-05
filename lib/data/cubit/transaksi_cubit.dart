@@ -13,6 +13,8 @@ class TransaksiCubit extends Cubit<TransaksiState> {
     ApiReturnValue<List<TransaksiModel>> result =
         await TransaksiService.getTransaksi();
 
+    List<TransaksiModel> empty = [];
+
     if (result.status == true) {
       emit(TransaksiLoaded(transaksis: result.value));
     } else {

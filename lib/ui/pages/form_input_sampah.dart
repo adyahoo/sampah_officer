@@ -65,7 +65,7 @@ class _FormInputSampahState extends State<FormInputSampah> {
                           suggestions: (state as NasabahLoaded)
                               .nasabahs!
                               .map((e) => SearchFieldListItem<NasabahModel>(
-                                  e.nama!,
+                                  '${e.kodeNasabah} - ${e.nama}',
                                   item: e))
                               .toList(),
                         );

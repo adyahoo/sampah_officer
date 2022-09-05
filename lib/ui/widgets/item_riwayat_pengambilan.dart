@@ -8,7 +8,8 @@ class ItemRiwayatPengambilan extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DateTime stringToDate = new DateFormat("yyyy-MM-dd").parse(transaksi.tglTransaksi);
+    DateTime stringToDate =
+        new DateFormat("yyyy-MM-dd").parse(transaksi.tglTransaksi);
     String formatedDate = new DateFormat('yMMMMEEEEd').format(stringToDate);
     return Column(
       children: [
@@ -36,11 +37,21 @@ class ItemRiwayatPengambilan extends StatelessWidget {
                             EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              e.nasabah!.nama!,
-                              style:
-                                  primaryBoldTextStyle.copyWith(fontSize: 18),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  e.nasabah!.nama!,
+                                  style: primaryBoldTextStyle.copyWith(
+                                      fontSize: 18),
+                                ),
+                                Text(
+                                  e.waktu!,
+                                  style: primaryTextStyle,
+                                ),
+                              ],
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,

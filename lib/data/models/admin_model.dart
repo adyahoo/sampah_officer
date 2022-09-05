@@ -3,7 +3,7 @@ part of 'models.dart';
 class AdminModel extends Equatable {
   final int? id;
   final String? nama;
-  final String? telepon;
+  final String? email;
   final String? tglLahir;
   final String? jenisKelamin;
   final String? alamat;
@@ -12,7 +12,7 @@ class AdminModel extends Equatable {
   AdminModel(
       {this.id,
       this.nama,
-      this.telepon,
+      this.email,
       this.tglLahir,
       this.jenisKelamin,
       this.alamat,
@@ -21,13 +21,18 @@ class AdminModel extends Equatable {
   factory AdminModel.fromJson(Map<String, dynamic> data) => AdminModel(
       id: data['id'],
       nama: data['nama'],
-      telepon: data['telepon'],
+      email: data['email'],
       tglLahir: data['tgl_lahir'],
       jenisKelamin: data['jenis_kelamin'],
       alamat: data['alamat'],
       fotoProfil: data['foto_profil']);
 
+  factory AdminModel.commentJson(Map<String, dynamic> data) => AdminModel(
+        id: data['id'],
+        nama: data['nama'],
+      );
+
   @override
   List<Object?> get props =>
-      [id, nama, telepon, tglLahir, jenisKelamin, alamat, fotoProfil];
+      [id, nama, email, tglLahir, jenisKelamin, alamat, fotoProfil];
 }

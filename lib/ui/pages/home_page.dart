@@ -46,7 +46,8 @@ class _HomePageState extends State<HomePage> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('Hi ${(state as UserLoaded).user!.nama}',
+                                    Text(
+                                        'Hi ${(state as UserLoaded).user!.nama}',
                                         style: primaryTextStyle),
                                     Text('Welcome Back!',
                                         style: titleStyle.copyWith(
@@ -57,19 +58,31 @@ class _HomePageState extends State<HomePage> {
                               //section history pengambilan
                               SectionTitle(title: 'Riwayat Pengambilan'),
                               BlocBuilder<TransaksiCubit, TransaksiState>(
-                                builder: (context, state) =>
-                                    (state is TransaksiLoaded)
-                                        ? Container(
-                                            width: double.infinity,
-                                            child: Column(
-                                              children: state.transaksis!
-                                                  .map((e) =>
-                                                      ItemRiwayatPengambilan(
-                                                          transaksi: e))
-                                                  .toList(),
-                                            ),
-                                          )
-                                        : SizedBox(),
+                                builder: (context, state) => (state
+                                            is TransaksiLoaded &&
+                                        state.transaksis!.length > 0)
+                                    ? Container(
+                                        width: double.infinity,
+                                        child: Column(
+                                          children: state.transaksis!
+                                              .map((e) =>
+                                                  ItemRiwayatPengambilan(
+                                                      transaksi: e))
+                                              .toList(),
+                                        ),
+                                      )
+                                    : Container(
+                                        width: double.infinity,
+                                        height:
+                                            MediaQuery.of(context).size.height -
+                                                250,
+                                        child: Center(
+                                            child: Text(
+                                          'Tidak Ada Data Transaksi',
+                                          style: primaryBoldTextStyle.copyWith(
+                                              fontSize: 18),
+                                        )),
+                                      ),
                               ),
                               SizedBox(
                                 height: 70,

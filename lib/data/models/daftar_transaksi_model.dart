@@ -8,6 +8,7 @@ class DaftarTransaksiModel extends Equatable {
   final double? totalBerat;
   final int? totalHarga;
   final String? tglTransaksi;
+  final String? waktu;
   final String? status;
   final int? isSampahEdited;
 
@@ -19,6 +20,7 @@ class DaftarTransaksiModel extends Equatable {
       this.totalBerat,
       this.totalHarga,
       this.tglTransaksi,
+      this.waktu,
       this.status,
       this.isSampahEdited});
 
@@ -32,6 +34,7 @@ class DaftarTransaksiModel extends Equatable {
           totalBerat: data['total_berat'].toDouble(),
           totalHarga: data['total_harga'],
           tglTransaksi: data['tanggal_transaksi'],
+          waktu: data['waktu'],
           status: data['status'],
           isSampahEdited: data['is_sampah_edited']);
 
@@ -44,6 +47,7 @@ class DaftarTransaksiModel extends Equatable {
         totalBerat,
         totalHarga,
         tglTransaksi,
+        waktu,
         status,
         isSampahEdited
       ];

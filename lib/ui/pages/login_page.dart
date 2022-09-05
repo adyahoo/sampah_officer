@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
     if (state is UserLoaded) {
       context.loaderOverlay.hide();
       snackbarSuccess(title: 'Login Sukses');
-      Get.to(() => MainPage());
+      Get.offAll(() => MainPage());
     } else {
       context.loaderOverlay.hide();
       snackbarError(
