@@ -17,9 +17,11 @@ class CommonService {
       return ApiReturnValue(status: false, message: data['message']);
     }
 
-    List<NasabahModel> nasabahs = (data['nasabah'] as Iterable)
-        .map((e) => NasabahModel.fromJson(e))
-        .toList();
+    List<NasabahModel> nasabahs = data['nasabah'] != null
+        ? (data['nasabah'] as Iterable)
+            .map((e) => NasabahModel.fromJson(e))
+            .toList()
+        : [];
 
     return ApiReturnValue(
         status: true, value: nasabahs, message: data['message']);
@@ -41,9 +43,11 @@ class CommonService {
       return ApiReturnValue(status: false, message: data['message']);
     }
 
-    List<JenisSampahModel> jenisSampahs = (data['jenis_sampah'] as Iterable)
-        .map((e) => JenisSampahModel.fromJson(e))
-        .toList();
+    List<JenisSampahModel> jenisSampahs = data['jenis_sampah'] != null
+        ? (data['jenis_sampah'] as Iterable)
+            .map((e) => JenisSampahModel.fromJson(e))
+            .toList()
+        : [];
 
     return ApiReturnValue(
         status: true, value: jenisSampahs, message: data['message']);

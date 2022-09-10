@@ -98,8 +98,8 @@ class _EditSampahState extends State<EditSampah> {
                       textEditingController: _beratController,
                       textInputType: TextInputType.number,
                       hasLabel: true,
-                      label: 'Berat (Kg)',
-                      hintText: 'Berat Sampah',
+                      label: 'Jumlah',
+                      hintText: 'Jumlah Sampah',
                     )
                   ],
                 ),

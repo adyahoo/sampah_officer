@@ -10,6 +10,7 @@ class FormInputSampah extends StatefulWidget {
 class _FormInputSampahState extends State<FormInputSampah> {
   int? _selectedNasabah;
   List<InputSampahModel> sampahs = [];
+  TextEditingController _searchController = TextEditingController();
 
   void handleSubmit() async {
     setState((() {
@@ -52,8 +53,11 @@ class _FormInputSampahState extends State<FormInputSampah> {
                         return SearchField<NasabahModel>(
                           hint: 'Cari Nama Nasabah',
                           onSuggestionTap: (value) {
-                            _selectedNasabah = value.item!.id!;
+                            setState(() {
+                              _selectedNasabah = value.item!.id!;
+                            });
                           },
+                          controller: _searchController,
                           searchInputDecoration: InputDecoration(
                               border: InputBorder.none,
                               suffixIcon: Icon(
@@ -119,7 +123,10 @@ class _FormInputSampahState extends State<FormInputSampah> {
               CustomButton(
                 title: 'Submit',
                 onPress: () {
-                  if (_selectedNasabah == null || sampahs.isEmpty) {
+                  print(_searchController.text);
+                  if (_selectedNasabah == null ||
+                      _searchController.text.isEmpty ||
+                      sampahs.isEmpty) {
                     snackbarError(
                         title: 'Terjadi Kesalahan',
                         message: 'Mohon Lengkapi Seluruh Data');

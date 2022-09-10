@@ -17,9 +17,11 @@ class TransaksiService {
       return ApiReturnValue(status: false, message: data['message']);
     }
 
-    List<TransaksiModel> transaksis = (data['transaksi'] as Iterable)
-        .map((e) => TransaksiModel.fromJson(e))
-        .toList();
+    List<TransaksiModel> transaksis = data['transaksi'] != null
+        ? (data['transaksi'] as Iterable)
+            .map((e) => TransaksiModel.fromJson(e))
+            .toList()
+        : [];
 
     return ApiReturnValue(
         status: true, value: transaksis, message: data['message']);

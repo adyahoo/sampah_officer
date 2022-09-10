@@ -117,8 +117,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   child: Text('Nama',
                                                       style:
                                                           normalBoldTextStyle)),
-                                              Text(state.user!.nama!,
-                                                  style: normalBoldTextStyle),
+                                              Expanded(
+                                                flex: 1,
+                                                child: Text(state.user!.nama!,
+                                                    style: normalBoldTextStyle,
+                                                    softWrap: true),
+                                              ),
                                             ])),
                                     Container(
                                         width: double.infinity,
@@ -132,8 +136,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   child: Text('Alamat',
                                                       style:
                                                           normalBoldTextStyle)),
-                                              Text(state.user!.alamat!,
-                                                  style: normalBoldTextStyle),
+                                              Expanded(
+                                                flex: 1,
+                                                child: Text(state.user!.alamat!,
+                                                    style: normalBoldTextStyle,
+                                                    softWrap: true),
+                                              ),
                                             ])),
                                     Container(
                                         width: double.infinity,

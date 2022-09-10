@@ -57,11 +57,11 @@ class ItemRiwayatPengambilan extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  'Total Transaksi : ${convertCurrency(e.totalHarga.toString())}',
+                                  'Total : ${convertCurrency(e.totalHarga.toString())}',
                                   style: primaryTextStyle,
                                 ),
                                 Text(
-                                  'Berat Sampah : ${e.totalBerat} kg',
+                                  'Berat : ${e.totalBerat} kg',
                                   style: primaryTextStyle,
                                 ),
                               ],
