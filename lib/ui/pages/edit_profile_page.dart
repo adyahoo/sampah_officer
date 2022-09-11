@@ -45,8 +45,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
     var state = context.read<UserCubit>().state;
 
     if (state is UserLoaded) {
-      Get.back();
       context.loaderOverlay.hide();
+      Get.back();
       snackbarSuccess(title: 'Mengubah Profile Berhasil');
     } else {
       context.loaderOverlay.hide();

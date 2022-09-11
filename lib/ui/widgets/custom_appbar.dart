@@ -5,12 +5,14 @@ class CustomAppbar extends StatelessWidget with PreferredSizeWidget {
   final bool hasBack;
   final bool hasIcon;
   final Function? onIconPress;
+  final Function? onBackPress;
 
   const CustomAppbar(
       {Key? key,
       required this.title,
       this.hasBack = true,
       this.hasIcon = false,
+      this.onBackPress,
       this.onIconPress})
       : super(key: key);
 
@@ -22,6 +24,15 @@ class CustomAppbar extends StatelessWidget with PreferredSizeWidget {
         style: appbarTitle,
       ),
       automaticallyImplyLeading: this.hasBack,
+      leading: IconButton(
+        splashRadius: 20,
+        icon: Icon(Icons.arrow_back),
+        onPressed: onBackPress != null
+            ? () => onBackPress!()
+            : () {
+                Get.back();
+              },
+      ),
       backgroundColor: Colors.white,
       elevation: 0,
       actions: [

@@ -82,7 +82,7 @@ class _EditSampahState extends State<EditSampah> {
                                         );
                                       },
                                       child: Text(
-                                        e.nama!,
+                                        '${e.nama} (${e.satuan})',
                                         style: normalTextStyle,
                                       )))
                                   .toList(),

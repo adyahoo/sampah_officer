@@ -22,6 +22,12 @@ class InputSampahCubit extends Cubit<InputSampahState> {
     emit(InputSampahLoaded(inputSampahs: newValue));
   }
 
+  void emptySampah() {
+    List<InputSampahModel> newValue = [];
+
+    emit(InputSampahLoaded(inputSampahs: newValue));
+  }
+
   void editSampah(int jenisSampah, double berat, String namaJenis, int index) {
     InputSampahModel result = InputSampahModel(
         jenis_sampah_id: jenisSampah, berat: berat, namaJenis: namaJenis);

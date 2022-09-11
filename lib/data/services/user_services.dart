@@ -108,8 +108,7 @@ class UserService {
     request.fields.addAll(params);
 
     if (image != null) {
-      var multiPartFile = await http.MultipartFile.fromPath(
-          'foto', image.path,
+      var multiPartFile = await http.MultipartFile.fromPath('foto', image.path,
           contentType: MediaType('image', 'png'), filename: 'gambar asjah');
       request.files.add(multiPartFile);
     }
@@ -120,7 +119,7 @@ class UserService {
 
     var data = jsonDecode(responseBody);
 
-    if (response.statusCode != 200) {
+    if (data['success'] != true) {
       return ApiReturnValue(
           status: false, message: '${data['errors'][0]['message']}');
     }
