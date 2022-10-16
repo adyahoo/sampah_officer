@@ -23,7 +23,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     final DateTime? picked = await showDatePicker(
         context: context,
         initialDate: DateTime.parse(widget.user!.tglLahir!),
-        firstDate: DateTime(1990),
+        firstDate: DateTime(1900),
         lastDate: DateTime.now());
 
     if (picked != null && picked != DateTime.now())

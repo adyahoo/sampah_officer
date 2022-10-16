@@ -1,4 +1,4 @@
-package com.example.sampah_officer
+package com.gunabangsa.petugas
 
 import io.flutter.embedding.android.FlutterActivity
 
